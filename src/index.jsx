@@ -4,27 +4,35 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 import "./style.css";
 
-function Home() {
+import Home from "./pages/Home";
+import Vans from "./pages/Vans";
+import About from "./pages/About";
+
+function App() {
 	return (
-		<h1>App</h1>
+		<Router>
+			<div className="wrapper">
+				<nav>
+					<Link to="/" className="nav--title">#VANLIFE</Link> {/* This renders an anchor (html element: a) */}
+					<Link to="/about" className="nav--item">About</Link>
+					<Link to="/vans" className="nav--item">Vans</Link>
+				</nav>
+				<main>
+					<Routes>
+						<Route path="/" element={<Home />} />
+						<Route path="/about" element={<About />} /> {/* localhost:3000/about */}
+						<Route path="/vans" element={<Vans />} /> {/* localhost:3000/ */}
+					</Routes>
+				</main>
+				<footer>
+					<p>© 2024 #VANLIFE</p>
+				</footer>
+			</div>
+		</Router>
 	);
 }
 
-function About() {
-	return (
-		<h1>About</h1>
-	);
-}
 
 createRoot(document.getElementById("root")).render(
-	<Router>
-		<nav>
-			<Link to="/">Home</Link> {/* This renders an anchor (html element: a) */}
-			<Link to="/about">About</Link>
-		</nav>
-		<Routes>
-			<Route path="/" element={<Home />} /> {/* localhost:3000/ */}
-			<Route path="/about" element={<About />} /> {/* localhost:3000/about */}
-		</Routes>
-	</Router>
+	<App />
 );
