@@ -5,7 +5,7 @@ import image from "../assets/about-hero.png";
 export default function About() {
 	return (
 		<div className="about">
-			<img src={image} className="about--image" />
+			<img src={image} className="about--image" alt="Vanlife" />
 
 			<div className="about--text">
 				<h1>
@@ -22,9 +22,9 @@ export default function About() {
 			</div>
 			<div className="alert">
 				<p>Your destination is waiting.<br/> Your van is ready.</p>
-				<a className="about--button">
+				<button className="about--button">
 					Explore our vans
-				</a>
+				</button>
 			</div>
 		</div>
 	);

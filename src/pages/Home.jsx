@@ -12,9 +12,9 @@ export default function Home() {
 			<p className="home--text">
 				Rent the perfect van to make your perfect road trip.
 			</p>
-			<a className="home--button"> {/* Might need to change this to Link or similar */}
+			<button className="home--button"> {/* Might need to change this to Link or similar */}
 				Find your van
-			</a>
+			</button>
 		</div>
 	);
 }

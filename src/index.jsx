@@ -6,6 +6,7 @@ import "./style.css";
 
 import Home from "./pages/Home";
 import Vans from "./pages/Vans";
+import VanDetail from "./pages/VanDetail";
 import About from "./pages/About";
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
 						<Route path="/" element={<Home />} />
 						<Route path="/about" element={<About />} /> {/* localhost:3000/about */}
 						<Route path="/vans" element={<Vans />} /> {/* localhost:3000/ */}
+						<Route path="/vans/:id" element={<VanDetail />} /> {/* localhost:3000/vans/1 */}
 					</Routes>
 				</main>
 				<footer>
