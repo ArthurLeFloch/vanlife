@@ -12,7 +12,7 @@ This repository contains my implementation of the project from the [React Router
 
 ## Repository Structure
 `server`:
-Contains an `api.js` file, which has to be launched sing `node api.js`.
+Contains an `api.js` file, which has to be launched using `node api.js`.
   
 `public`:
 Folder initially created using `npx create-react-app`, containing `index.html`.
