@@ -1,7 +1,8 @@
 import React from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useLocation } from "react-router-dom";
 
 export default function VanDetail() {
+	const location = useLocation();
 	const params = useParams();
 
 	const [vanData, setVanData] = React.useState(null);
@@ -12,11 +13,25 @@ export default function VanDetail() {
 			.then((data) => setVanData(data));
 	}, [params.id]);
 
+	const search = location.state?.search || "";
+
+	let backText = "Back to all vans";
+	if (search !== "") {
+		const sp = new URLSearchParams(search);
+		const type = sp.get("type");
+		if (type) {
+			backText = `Back to ${type} vans`;
+		}
+	}
+
 	return (
 		<div className="van-details">
-			<Link to="/vans" className="back">
+			<Link to={`..${search}`}
+				relative="path"
+				className="back"
+			>
 				<i className="back-arrow fas fa-arrow-left"></i>
-				Back to all vans
+				{backText}
 			</Link>
 			{vanData ? (
 				<>

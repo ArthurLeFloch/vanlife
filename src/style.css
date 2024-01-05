@@ -157,6 +157,7 @@ footer {
 	border: none;
 	font-size: 1rem;
 	font-weight: 500;
+	text-decoration: none;
 }
 
 .vans--filter.simple.van--filter-selected, .vans--filter.simple:hover, .vans--type.simple {

@@ -9,7 +9,7 @@ let userIndex = 0;
 
 function createVan(name, price, description, imageUrl, type, hostId) {
 	return {
-		id: vanIndex++,
+		id: `${vanIndex++}`,
 		name: name,
 		price: price,
 		description: description,
@@ -21,7 +21,7 @@ function createVan(name, price, description, imageUrl, type, hostId) {
 
 function createUser(name, email, password) {
 	return {
-		id: userIndex++,
+		id: `${userIndex++}`,
 		name: name,
 		email: email,
 		password: password,
@@ -50,8 +50,7 @@ app.get('/vans', (req, res) => {
 });
 
 app.get('/vans/:id', (req, res) => {
-	const vanId = Number(req.params.id);
-	const van = vans.find((van) => van.id === vanId);
+	const van = vans.find((van) => van.id === req.params.id);
 	res.json(van);
 });
 
@@ -66,7 +65,6 @@ app.get('/host/vans', (req, res) => {
 });
 
 app.get('/host/vans/:id', (req, res) => {
-	const vanId = Number(req.params.id);
-	const van = vans.find((van) => van.id === vanId);
+	const van = vans.find((van) => van.id === req.params.id);
 	res.json(van);
 });
