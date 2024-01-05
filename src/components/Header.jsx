@@ -8,6 +8,9 @@ export default function Header() {
 			<NavLink to="/host" className="nav--item">Host</NavLink>
 			<NavLink to="/about" className="nav--item">About</NavLink>
 			<NavLink to="/vans" className="nav--item">Vans</NavLink>
+			<NavLink to="/login" className="nav--item">
+				<i className="fas fa-user-circle fa-2x"></i>
+			</NavLink>
 		</nav>
 	);
 }

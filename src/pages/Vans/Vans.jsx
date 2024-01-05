@@ -1,16 +1,14 @@
 import React from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useSearchParams, useLoaderData } from "react-router-dom";
+import { getVans } from "../../api";
+
+export function loader() {
+	return getVans();
+}
 
 export default function Vans() {
 	const [searchParams,] = useSearchParams();
-
-	const [vans, setVans] = React.useState([]);
-
-	React.useEffect(() => {
-		fetch("http://localhost:3001/vans")
-			.then((res) => res.json())
-			.then((data) => setVans(data));
-	}, []);
+	const vans = useLoaderData();
 
 	function filterVans(type) {
 		return vans.map((van) => {
