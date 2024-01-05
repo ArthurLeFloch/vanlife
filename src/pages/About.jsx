@@ -6,11 +6,8 @@ export default function About() {
 	return (
 		<div className="about">
 			<img src={image} className="about--image" alt="Vanlife" />
-
+			<h1 className="title">Don't squeeze in a sedan when you could relax in a van.</h1>
 			<div className="about--text">
-				<h1>
-					Don't squeeze in a sedan when you could relax in a van.
-				</h1>
 				<p>
 					Our mission is to enliven your road trip with the perfect travel van rental.
 					Our vans are recertified before each trip to ensure your travel plans can go off without a hitch.

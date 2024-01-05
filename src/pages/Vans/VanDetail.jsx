@@ -14,12 +14,12 @@ export default function VanDetail() {
 
 	return (
 		<div className="van-details">
+			<Link to="/vans" className="back">
+				<i className="back-arrow fas fa-arrow-left"></i>
+				Back to all vans
+			</Link>
 			{vanData ? (
 				<>
-					<Link to="/vans" className="van-details--back">
-						<i className="van-details--arrow fas fa-arrow-left"></i>
-						Back to all vans
-					</Link>
 					<img src={vanData.imageUrl} alt={vanData.name} className="van-details--image" />
 					<p className={"vans--type " + vanData.type}>{vanData.type}</p>
 					<h1 className="van-details--title">{vanData.name}</h1>

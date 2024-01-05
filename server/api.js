@@ -59,8 +59,14 @@ app.get('/host', (req, res) => {
 	res.json(users);
 });
 
-app.get('/host/:id', (req, res) => {
-	const hostId = Number(req.params.id);
-	const host = users.find((user) => user.id === hostId);
-	res.json(host);
+app.get('/host/vans', (req, res) => {
+	const hostId = "123"; // Number(req.params.id); // Hardcoded for now
+	const hostVans = vans.filter((van) => van.hostId === hostId);
+	res.json(hostVans);
+});
+
+app.get('/host/vans/:id', (req, res) => {
+	const vanId = Number(req.params.id);
+	const van = vans.find((van) => van.id === vanId);
+	res.json(van);
 });
