@@ -49,9 +49,11 @@ const router = createBrowserRouter(createRoutesFromElements(
 			/> {/* localhost:3000/host/income */}
 			<Route path="vans" element={<HostVans />}
 				loader={hostVansLoader}
+				errorElement={<Error />}
 			/>
 			<Route path="vans/:id" element={<HostVanDetails />}
 				loader={hostVanDetailsLoader}
+				errorElement={<Error />}
 			>
 				<Route index element={<HostVanInfo />}
 					loader={async ({ request }) => await requireAuth(request)}
@@ -67,7 +69,7 @@ const router = createBrowserRouter(createRoutesFromElements(
 		</Route>
 		<Route path="about" element={<About />} />
 		<Route path="vans" element={<Vans />} loader={vansLoader} errorElement={<Error />} />
-		<Route path="vans/:id" element={<VanDetail />} loader={vanDetailLoader} />
+		<Route path="vans/:id" element={<VanDetail />} loader={vanDetailLoader} errorElement={<Error />} />
 		<Route path="login" element={<Login />} loader={loginLoader} action={loginAction} />
 		<Route path="*" element={<PageNotFound />} />
 	</Route>

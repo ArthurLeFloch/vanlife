@@ -1,17 +1,17 @@
-import React from "react";
-import { Link, useSearchParams, useLoaderData } from "react-router-dom";
+import React, { Suspense } from "react";
+import { Link, useSearchParams, useLoaderData, defer, Await } from "react-router-dom";
 
 import { getVans } from "../../api";
 
 export function loader() {
-	return getVans();
+	return defer({ vans: getVans() });
 }
 
 export default function Vans() {
 	const [searchParams,] = useSearchParams();
-	const vans = useLoaderData();
+	const loaderData = useLoaderData();
 
-	function filterVans(type) {
+	function filterVans(vans, type) {
 		return vans.map((van) => {
 			return (van.type === type || type === null) ? (
 				<Link to={van.id} key={van.id} className="vans--item" state={{ search: `?${searchParams.toString()}` }}>
@@ -69,7 +69,13 @@ export default function Vans() {
 				</div>
 			</div>
 			<div className="vans--list">
-				{filterVans(searchParams.get("type"))}
+				<Suspense fallback={<div>Loading vans...</div>}>
+					<Await resolve={loaderData.vans}>
+						{
+							(vans) => filterVans(vans, searchParams.get("type"))
+						}
+					</Await>
+				</Suspense>
 			</div>
 		</div>
 	);
