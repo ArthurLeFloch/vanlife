@@ -468,3 +468,19 @@ footer {
 	width: 100%;
 	max-width: 400px;
 }
+
+.login--button:disabled {
+	background-color: #ccc;
+	color: #555;
+	cursor: not-allowed;
+}
+
+.login--message {
+	color: #f33;
+	font-weight: bold;
+}
+
+.login--error {
+	color: #f33;
+	font-weight: bold;
+}

@@ -1,14 +1,16 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
+
+import { getHostVans } from "../../api";
+import { requireAuth } from "../../utils";
+
+export async function loader({ request }) {
+	await requireAuth(request);
+	return getHostVans();
+}
 
 export default function HostVans() {
-	const [vans, setVans] = React.useState([]);
-
-	React.useEffect(() => {
-		fetch("http://localhost:3001/host/vans")
-			.then((response) => response.json())
-			.then((data) => setVans(data));
-	}, []);
+	const vans = useLoaderData();
 
 	const vanElements = vans.map((van) => {
 		return (

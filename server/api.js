@@ -3,6 +3,7 @@ const cors = require("cors");
 
 const app = express();
 app.use(cors());
+app.use(express.json());
 
 let vanIndex = 0;
 let userIndex = 0;
@@ -67,4 +68,23 @@ app.get('/host/vans', (req, res) => {
 app.get('/host/vans/:id', (req, res) => {
 	const van = vans.find((van) => van.id === req.params.id);
 	res.json(van);
+});
+
+app.post('/login', (req, res) => {
+	const { email, password } = req.body;
+	console.log(req.body);
+	const foundUser = users.filter((user) => (user.email == email && user.password == password));
+	console.log(foundUser);
+	if (foundUser.length !== 1) {
+		res.status(401).json({ message: "Invalid credentials" });
+		return;
+	}
+
+	// Proper authentication is not the purpose of this demo
+	delete foundUser.password;
+	res.json({
+		name: foundUser.name,
+		email: foundUser.email,
+		token: "token",
+	});
 });
