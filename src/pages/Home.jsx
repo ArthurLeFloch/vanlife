@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Home() {
 	return (
@@ -12,9 +13,9 @@ export default function Home() {
 			<p className="home--text">
 				Rent the perfect van to make your perfect road trip.
 			</p>
-			<button className="home--button"> {/* Might need to change this to Link or similar */}
+			<Link to="vans" className="home--button">
 				Find your van
-			</button>
+			</Link>
 		</div>
 	);
 }

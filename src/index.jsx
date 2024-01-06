@@ -14,7 +14,7 @@ import Home from "./pages/Home";
 import Vans, { loader as vansLoader } from "./pages/Vans/Vans";
 import VanDetail, { loader as vanDetailLoader } from "./pages/Vans/VanDetail";
 
-import Dashboard from "./pages/Host/Dashboard";
+import Dashboard, { loader as dashboardLoader } from "./pages/Host/Dashboard";
 import Income from "./pages/Host/Income";
 import HostVans, { loader as hostVansLoader } from "./pages/Host/HostVans";
 import HostVanDetails, { loader as hostVanDetailsLoader } from "./pages/Host/HostVanDetails";
@@ -40,9 +40,11 @@ localStorage.setItem("loggedIn", false);
 const router = createBrowserRouter(createRoutesFromElements(
 	<Route path="/" element={<Layout />}>
 		<Route index element={<Home />} />
-		<Route path="host" element={<HostLayout />} >
+		<Route path="host" element={<HostLayout />} 
+			loader={async ({ request }) => await requireAuth(request)}
+		>
 			<Route index element={<Dashboard />}
-				loader={async ({ request }) => await requireAuth(request)}
+				loader={dashboardLoader}
 			/> {/* localhost:3000/host */}
 			<Route path="income" element={<Income />}
 				loader={async ({ request }) => await requireAuth(request)}
@@ -65,7 +67,9 @@ const router = createBrowserRouter(createRoutesFromElements(
 					loader={async ({ request }) => await requireAuth(request)}
 				/>
 			</Route>
-			<Route path="reviews" element={<Reviews />} />
+			<Route path="reviews" element={<Reviews />}
+				loader={async ({ request }) => await requireAuth(request)}
+			/>
 		</Route>
 		<Route path="about" element={<About />} />
 		<Route path="vans" element={<Vans />} loader={vansLoader} errorElement={<Error />} />

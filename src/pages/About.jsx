@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import image from "../assets/about-hero.png";
 
@@ -19,9 +20,9 @@ export default function About() {
 			</div>
 			<div className="alert">
 				<p>Your destination is waiting.<br/> Your van is ready.</p>
-				<button className="about--button">
+				<Link to="/vans" className="about--button">
 					Explore our vans
-				</button>
+				</Link>
 			</div>
 		</div>
 	);

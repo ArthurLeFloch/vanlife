@@ -18,10 +18,14 @@ Contains an `api.js` file, which has to be launched using `node api.js`.
 Folder initially created using `npx create-react-app`, containing `index.html`.
 
 `src`:
-JSX elements, and a `style.css` file.
+JSX elements, JS utils (`api.js`, `utils.js`) and a `style.css` file.
 
 ## Usage
-1. The server needs to be launched using `node api.js`.
-2. To run the development server, run `npm start`.
+1. The server needs to be launched using `cd server && node api.js`.
+2. To run the development server, run `npm start` at the root of the project.
 
 Now, the website can be seen at [http://localhost:3000](http://localhost:3000).
+
+Some pages are not accessible without being logged in (`/host` and all nested pages). To log in, use the following credentials:
+- username: `john.doe@gmail.com`
+- password: `123`
