@@ -40,7 +40,7 @@ localStorage.setItem("loggedIn", false);
 const router = createBrowserRouter(createRoutesFromElements(
 	<Route path="/" element={<Layout />}>
 		<Route index element={<Home />} />
-		<Route path="host" element={<HostLayout />} 
+		<Route path="host" element={<HostLayout />}
 			loader={async ({ request }) => await requireAuth(request)}
 		>
 			<Route index element={<Dashboard />}
@@ -77,7 +77,7 @@ const router = createBrowserRouter(createRoutesFromElements(
 		<Route path="login" element={<Login />} loader={loginLoader} action={loginAction} />
 		<Route path="*" element={<PageNotFound />} />
 	</Route>
-))
+), { basename: process.env.PUBLIC_URL });
 
 
 createRoot(document.getElementById("root")).render(

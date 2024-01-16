@@ -1,5 +1,7 @@
+const server = "http://localhost:3001";
+
 export async function getVans(id) {
-	const url = id ? `http://localhost:3001/vans/${id}` : "http://localhost:3001/vans";
+	const url = id ? `${server}/vans/${id}` : `${server}/vans`;
 	const res = await fetch(url);
 	if (!res.ok) {
 		const error = new Error("Failed to fetch vans");
@@ -12,7 +14,7 @@ export async function getVans(id) {
 }
 
 export async function getHostVans(id) {
-	const url = id ? `http://localhost:3001/host/vans/${id}` : "http://localhost:3001/host/vans";
+	const url = id ? `${server}/host/vans/${id}` : `${server}/host/vans`;
 	const res = await fetch(url);
 	if (!res.ok) {
 		const error = new Error("Failed to fetch vans from host");
@@ -25,7 +27,7 @@ export async function getHostVans(id) {
 }
 
 export async function loginUser(credentials) {
-	const res = await fetch("http://localhost:3001/login", {
+	const res = await fetch(`${server}/login`, {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",
