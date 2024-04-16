@@ -1,0 +1,11 @@
+services:
+  vanlife-client:
+    restart: unless-stopped
+    build: ./client
+    ports:
+      - ${PORT:-8080}:80
+    depends_on:
+      - vanlife-api
+  vanlife-api:
+    restart: unless-stopped
+    build: ./server
