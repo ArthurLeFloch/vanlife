@@ -42,8 +42,8 @@ const users = [
 	createUser("John Doe", "john.doe@gmail.com", "123"),
 ];
 
-app.listen(3001, () => {
-	console.log('Server listening on port 3001');
+app.listen(3000, () => {
+	console.log('Server listening on port 3000');
 });
 
 app.get('/vans', (req, res) => {
@@ -72,9 +72,8 @@ app.get('/host/vans/:id', (req, res) => {
 
 app.post('/login', (req, res) => {
 	const { email, password } = req.body;
-	console.log(req.body);
+	console.log(`Received login request for email: ${email}`);
 	const foundUser = users.filter((user) => (user.email == email && user.password == password));
-	console.log(foundUser);
 	if (foundUser.length !== 1) {
 		res.status(401).json({ message: "Invalid credentials" });
 		return;

@@ -1,4 +1,7 @@
-const server = "http://localhost:3001";
+let server = "http://localhost:3000";
+
+if (process.env.NODE_ENV === "production")
+	server = "/api";
 
 export async function getVans(id) {
 	const url = id ? `${server}/vans/${id}` : `${server}/vans`;

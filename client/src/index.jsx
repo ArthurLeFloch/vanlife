@@ -45,10 +45,10 @@ const router = createBrowserRouter(createRoutesFromElements(
 		>
 			<Route index element={<Dashboard />}
 				loader={dashboardLoader}
-			/> {/* localhost:3000/host */}
+			/> {/* localhost:5173/host */}
 			<Route path="income" element={<Income />}
 				loader={async ({ request }) => await requireAuth(request)}
-			/> {/* localhost:3000/host/income */}
+			/> {/* localhost:5173/host/income */}
 			<Route path="vans" element={<HostVans />}
 				loader={hostVansLoader}
 				errorElement={<Error />}
@@ -77,7 +77,7 @@ const router = createBrowserRouter(createRoutesFromElements(
 		<Route path="login" element={<Login />} loader={loginLoader} action={loginAction} />
 		<Route path="*" element={<PageNotFound />} />
 	</Route>
-), { basename: process.env.PUBLIC_URL });
+));
 
 
 createRoot(document.getElementById("root")).render(
